@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'tenancy_name' => env('TENANCY_APP_NAME', 'TENANT Laravel'),
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
@@ -52,8 +53,8 @@ return [
     |
     */
 
+    'base_url' => env('APP_BASE_URL', 'localhost'),
     'url' => env('APP_URL', 'http://localhost'),
-
     'asset_url' => env('ASSET_URL', null),
 
     /*
