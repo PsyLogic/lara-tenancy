@@ -10,10 +10,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('tenant.home');
-});
-
-Route::get('/home', function () {
-    echo "Tenant Home";
+Route::group(['middleware' => ['enfore.tenancy', 'web'], 'namespace' => 'App\Http\Controllers\Tenants'], function () {
+    Route::get('/', 'HomeController');
+    Route::get('/profile', 'ProfileController@index')->name('profile');
 });

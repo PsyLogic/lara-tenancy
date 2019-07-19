@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Tenants;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Helpers\_Tenant;
 
-class HomeController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -12,15 +14,17 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct()
-    { }
+    {
+        $this->middleware('auth');
+    }
 
     /**
-     * Show the application dashboard.
+     * Show the Tenant Profile.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('home');
+        return _Tenant::view('profile');
     }
 }

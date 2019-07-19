@@ -110,7 +110,7 @@ return [
          * @see
          * @info set to true to enable.
          */
-        'auto-delete-tenant-directory' => env('AUTO_DELETE_TENANT_DIRECTORY',false),
+        'auto-delete-tenant-directory' => env('AUTO_DELETE_TENANT_DIRECTORY', false),
 
         /**
          * Time to cache websites in minutes. Set to false to disable.
@@ -229,8 +229,8 @@ return [
          * @warn specify a valid fully qualified class name.
          */
         'tenant-seed-class' => false,
-//      eg an admin seeder under `app/Seeders/AdminSeeder.php`:
-//        'tenant-seed-class' => App\Seeders\AdminSeeder::class,
+        //      eg an admin seeder under `app/Seeders/AdminSeeder.php`:
+        //        'tenant-seed-class' => App\Seeders\AdminSeeder::class,
 
         /**
          * Automatically generate a tenant database based on the random id of the
@@ -296,10 +296,10 @@ return [
          * @info Useful for overriding the connection of third party packages.
          */
         'force-tenant-connection-of-models' => [
-//            App\User::class
+            //            App\User::class
         ],
         'force-system-connection-of-models' => [
-//            App\User::class
+            //            App\User::class
         ],
     ],
 

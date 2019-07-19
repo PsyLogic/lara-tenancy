@@ -8,13 +8,7 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    Tenant You are logged in!
+                   Tenant Home :: Welcome {{Auth::user()->name}}
                 </div>
             </div>
         </div>
