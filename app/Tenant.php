@@ -58,6 +58,7 @@ class Tenant{
             'email' => $user['email'],
             'password' => Hash::make($user['password'])
         ]);
+        $user->assignRole('admin');
         event(new Registered($user));
         return $user;
     }
