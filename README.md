@@ -43,12 +43,6 @@ you'll asked for user information such as [name, email, password]
  > ******
 ```
 
-Now Go to for example
-```sh
-tuto.lara-tenancy.test
-```
-
-
 after the FQDN and User is created you'll get info messages:
 > New Hostname tuto is created successufully
 
@@ -60,6 +54,16 @@ Go to for example
 lara-tenancy.test/register
 ```
 
+Now Go to for example
+```sh
+tuto.lara-tenancy.test
+```
+
+##### Delete Tenant via Artisan Commande.
+
+```sh
+$ php artisan tenant:delete tuto
+```
 
 ##### Tenant Structure
 Middleware (to enfore using tenant connection)
