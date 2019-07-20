@@ -59,7 +59,7 @@ class createTenant extends Command
         }
 
         $Tenant = Tenant::create($fqdn,$user);
-
         $this->info("New Hostname {$fqdn} is created successufully");
+        $this->info("Verification Email was sent to {$Tenant->owner->email}");
     }
 }

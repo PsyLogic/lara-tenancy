@@ -9,6 +9,7 @@ use Hyn\Tenancy\Contracts\Repositories\HostnameRepository;
 use Hyn\Tenancy\Environment;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Registered;
 
 class Tenant{
 
@@ -52,11 +53,13 @@ class Tenant{
     }
 
     private static function assignOwner(array $user): User{
-        return User::create([
+        $user =  User::create([
             'name' => $user['name'],
             'email' => $user['email'],
             'password' => Hash::make($user['password'])
         ]);
+        event(new Registered($user));
+        return $user;
     }
 
     public static function isExists($fqdn): bool{
