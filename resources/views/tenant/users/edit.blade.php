@@ -2,13 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-12">
-            @if(session()->get('success'))
-                <div class="alert alert-success">
-                {{ session()->get('success') }}  
-                </div>
-            @endif
-        </div>
+        @include('tenant.layout.alert')
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Update User') }}</div>

@@ -37,9 +37,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                         </li>
+                        @hasanyrole('owner|admin')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.index') }}">Users</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('role.index') }}">Roles</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('permission.index') }}">Permissions</span></a>
+                        </li>
+                        @endhasanyrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->

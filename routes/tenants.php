@@ -26,6 +26,8 @@ Route::group(['middleware' => ['web', 'enfore.tenancy'], 'namespace' => 'App\Htt
 // Admin/Owner Routes
 Route::group(['middleware' => ['enfore.tenancy', 'web', 'role:admin|owner', 'auth'], 'namespace' => 'App\Http\Controllers\Tenants'], function () {
     Route::resource('user', 'UserController');
+    Route::resource('role', 'RoleController');
+    Route::resource('permission', 'PermissionController');
 });
 
 // Public Routes

@@ -3,20 +3,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-10">
-            <h1><i class="fa fa-users"></i> User Administration <a href="#" class="btn btn-default pull-right">Roles</a>
-                <a href="#" class="btn btn-default pull-right">Permissions</a></h1>
+            <h1>
+                <i class="fa fa-users"></i> User Administration
+                <a href="{{route('role.index')}}" class="btn btn-default pull-right">Roles</a>
+                <a href="{{route('permission.index')}}" class="btn btn-default pull-right">Permissions</a></h1>
             <hr>
-            <div class="col-sm-12">
-                @if(session()->get('success'))
-                    <div class="alert alert-success">
-                    {{ session()->get('success') }}  
-                    </div>
-                @elseif(session()->get('error'))
-                    <div class="alert alert-danger">
-                        {{ session()->get('error') }}  
-                    </div>
-                @endif
-            </div>
+            @include('tenant.layout.alert')
             <a href="{{ route('user.create') }}" class="btn btn-success">Add User</a>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
