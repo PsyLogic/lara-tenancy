@@ -2,6 +2,9 @@
 
 Lara-Tenancy boilerplate based on the package [hyn/multi-tenant](https://github.com/tenancy/multi-tenant) that makes your app multi tenant. Serving multiple websites, each with one or more hostnames from the same codebase. But with clear separation of assets, database and the ability to override logic per tenant.
 
+The boilerplate has no advanced code is so simple for all Laravel users, so that they can fork it and change it easly
+What I care about is the concept of mutli-tenancy so I'm trying to make it simple as possible.
+
 ### Installation
 ```sh
 $ git clone https://github.com/PsyLogic/lara-tenancy.git

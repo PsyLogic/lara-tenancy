@@ -18,6 +18,7 @@ class TenantDatabaseSeeder extends Seeder
             return Permission::create(['name' => $name]);
         });
         // add admin role
+        Role::create(['name' => 'owner']);
         $adminRole = Role::create(['name' => 'admin']);
         $adminRole->givePermissionTo($adminPermissions);
         // add a default user role

@@ -6,8 +6,8 @@ class _Tenant
 {
 
 
-    public static function view(string $view)
+    public static function view($view = null, $data = [], $mergeData = [])
     {
-        return view('tenant.' . $view);
+        return view('tenant.' . $view, $data, $mergeData);
     }
 }

@@ -10,11 +10,6 @@
 |
 */
 
-Route::group(['middleware' => ['enfore.tenancy', 'web', 'verified'], 'namespace' => 'App\Http\Controllers\Tenants'], function () {
-    Route::get('/', 'HomeController');
-    Route::get('/profile', 'ProfileController@index')->name('profile');
-});
-
 Route::group(['middleware' => ['web', 'enfore.tenancy'], 'namespace' => 'App\Http\Controllers'], function () {
     
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -26,5 +21,17 @@ Route::group(['middleware' => ['web', 'enfore.tenancy'], 'namespace' => 'App\Htt
     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
-    // Auth::routes();
 });
+
+// Admin/Owner Routes
+Route::group(['middleware' => ['enfore.tenancy', 'web', 'role:admin|owner', 'auth'], 'namespace' => 'App\Http\Controllers\Tenants'], function () {
+    Route::resource('user', 'UserController');
+});
+
+// Public Routes
+Route::group(['middleware' => ['enfore.tenancy', 'web', 'verified'], 'namespace' => 'App\Http\Controllers\Tenants'], function () {
+    Route::get('/', 'HomeController')->name('home');
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+});
+
+
