@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        @include('tenant.layout.alert')
+        @include('tenant.layouts.alert')
         <div class="col-md-4">
             <h4>Just for Demonstration purpose</h4>
             <div class="card profile-card-3">

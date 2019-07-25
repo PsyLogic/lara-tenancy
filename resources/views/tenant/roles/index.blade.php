@@ -9,7 +9,7 @@
                 <a href="{{ route('permission.index') }}" class="btn btn-default pull-right">Permissions</a>
             </h1>
             <hr>
-            @include('tenant.layout.alert')
+            @include('tenant.layouts.alert')
             <a href="{{ route('role.create') }}" class="btn btn-success">Add Role</a>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
