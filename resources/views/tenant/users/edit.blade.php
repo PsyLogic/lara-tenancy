@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        @include('tenant.layouts.alert')
+        @include('alerts.session_succ_err')
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Update User') }}</div>
