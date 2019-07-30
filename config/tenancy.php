@@ -30,10 +30,10 @@ return [
          */
 
         // Must implement \Hyn\Tenancy\Contracts\Hostname
-        'hostname' => \Hyn\Tenancy\Models\Hostname::class,
+        'hostname' => \App\Hostname::class,
 
         // Must implement \Hyn\Tenancy\Contracts\Website
-        'website' => \Hyn\Tenancy\Models\Website::class
+        'website' => \App\Website::class
     ],
     /**
      * The package middleware. Removing a middleware here will disable it.
@@ -43,6 +43,9 @@ return [
         // The eager identification middleware.
         \Hyn\Tenancy\Middleware\EagerIdentification::class,
 
+        // Check if the hostnale is banned
+        \App\Http\Middleware\BannedHostname::class,
+        
         // The hostname actions middleware (redirects, https, maintenance).
         \Hyn\Tenancy\Middleware\HostnameActions::class,
     ],

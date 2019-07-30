@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Hyn\Tenancy\Models\Website;
-use Hyn\Tenancy\Models\Hostname;
+use App\Website;
+use App\Hostname;
 use Hyn\Tenancy\Contracts\Repositories\WebsiteRepository;
 use Hyn\Tenancy\Contracts\Repositories\HostnameRepository;
 use Hyn\Tenancy\Environment;
