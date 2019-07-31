@@ -12,10 +12,18 @@ $ cd lara-tenancy
 $ composer install
 $ cp .env.example .env
 $ php artisan key:generate
-$ php artisan migrate --database=system
+$ php artisan migrate --database=system --seed
 ```
 
 ### Usage
+
+Default Super Admin was created for you
+to manage all Tenants and Users
+
+```
+email: admin@example.com
+password: password
+```
 
 I suppose this is your vhost
 
@@ -57,12 +65,14 @@ Go to for example
 lara-tenancy.test/register
 ```
 
-Now Go to for example
+After Creating New Tenat from Command line or UI, you can now Go to for example
 ```sh
 tuto.lara-tenancy.test
 ```
 
 ##### Delete Tenant via Artisan Commande.
+
+only works in local mode
 
 ```sh
 $ php artisan tenant:delete tuto
@@ -90,7 +100,7 @@ routes/tenants.php
 ```
 ### Todos
 
- - Tenant CRUD & ACL
+ - Tenant CRUD & ACL [done]
  - Tenancy Administration
  - Add Queues and Jobs for Creating tenants & Email verification & password reset
  
