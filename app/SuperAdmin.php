@@ -44,5 +44,10 @@ class SuperAdmin extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime:F d, Y h:ia'
     ];
+
+    public function getFormatedCreatedAtAttribute(){
+        return $this->created_at->format('F d, Y h:ia');
+    }
 }

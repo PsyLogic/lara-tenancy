@@ -17,8 +17,9 @@ Route::domain(config('app.base_url'))->group(function () {
     Route::post('/login/admin', 'Auth\LoginController@adminLogin');
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-    Route::prefix('/admin')->name('admin.')->middleware('auth:admin')->group(function () {
-        Route::get('/', 'SuperAdminController@home')->name('home');   
+    Route::prefix('/admin')->name('admin.')->middleware('auth:admin')->namespace('SuperAdmin')->group(function () {
+        Route::get('/', 'HomeController@home')->name('home');
+        Route::resource('user', 'UserController');
     });
 
     // Landing Page Routes
