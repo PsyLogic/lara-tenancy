@@ -42,12 +42,12 @@ return [
     'middleware' => [
         // The eager identification middleware.
         \Hyn\Tenancy\Middleware\EagerIdentification::class,
-
-        // Check if the hostnale is banned
-        \App\Http\Middleware\BannedHostname::class,
         
         // The hostname actions middleware (redirects, https, maintenance).
         \Hyn\Tenancy\Middleware\HostnameActions::class,
+
+        // Check if the hostname is banned
+        \App\Http\Middleware\BannedHostname::class,
     ],
     'website' => [
         /**
