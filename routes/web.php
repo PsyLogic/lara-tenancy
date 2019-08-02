@@ -20,6 +20,9 @@ Route::domain(config('app.base_url'))->group(function () {
     Route::prefix('/admin')->name('admin.')->middleware('auth:admin')->namespace('SuperAdmin')->group(function () {
         Route::get('/', 'HomeController@home')->name('home');
         Route::resource('user', 'UserController');
+        Route::get('/hostname', 'HostnameController@index')->name('hostname.index');
+        Route::get('/hostname/{hostname}', 'HostnameController@show')->name('hostname.show');
+        Route::put('/hostname/{hostname}', 'HostnameController@block')->name('hostname.block');
     });
 
     // Landing Page Routes
