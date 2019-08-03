@@ -28,6 +28,9 @@ Route::group(['middleware' => ['enfore.tenancy', 'web', 'role:admin|owner', 'aut
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');
     Route::resource('permission', 'PermissionController');
+    Route::get('/hostnames', 'HostnameController@index')->name('tenant.hostname.index');
+    Route::get('/hostnames/{hostname}/edit', 'HostnameController@edit')->name('tenant.hostname.edit');
+    Route::put('/hostnames/{hostname}', 'HostnameController@update')->name('tenant.hostname.update');
 });
 
 // Public Routes

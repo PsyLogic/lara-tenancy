@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Tenant;
+use App\Services\TenantService;
 
 class deleteTenant extends Command
 {
@@ -40,12 +40,12 @@ class deleteTenant extends Command
     {
         $fqdn = $this->argument('fqdn');
 
-        if(!Tenant::isExists($fqdn)){
+        if(!TenantService::isExists($fqdn)){
             $this->error("{$fqdn} is not Exists");
             return;
         }
 
-        if(Tenant::delete($fqdn))
+        if(TenantService::delete($fqdn))
             $this->info("Tenant {$fqdn} successfully deleted.");
         else
             $this->info("Error while deleting Tenant {$fqdn}");

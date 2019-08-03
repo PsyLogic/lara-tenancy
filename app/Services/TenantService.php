@@ -1,17 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Services;
 
-use App\Website;
-use App\Hostname;
 use Hyn\Tenancy\Contracts\Repositories\WebsiteRepository;
 use Hyn\Tenancy\Contracts\Repositories\HostnameRepository;
 use Hyn\Tenancy\Environment;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use App\Website;
+use App\Hostname;
+use Illuminate\Support\Facades\Validator;
 
-class Tenant{
+class TenantService{
 
     public function __construct(Website $website, Hostname $hosntame, User $owner) {
         $this->website = $website;
@@ -19,18 +21,13 @@ class Tenant{
         $this->owner = $owner;
     }
 
-    public static function create($fqdn, array $user, array $options = []): Tenant{
+    public static function create($fqdn, array $user): TenantService{
         
         $website = new Website;
         app(WebsiteRepository::class)->create($website);
 
         $hostname = new Hostname;
         $hostname->fqdn = static::fqdn($fqdn);
-        if(!empty($options)){
-            $hostname->redirect_to = $options['redirect_to'] ?? NULL;
-            $hostname->force_https = $options['force_https'] ?? false;
-            $hostname->under_maintenance_since = isset($options['under_maintenance']) ? Carbon::parse($options['under_maintenance'])->format('Y-m-d H:i:s') : NULL;
-        }
 
         $hostname = app(HostnameRepository::class)->create($hostname);
         app(HostnameRepository::class)->attach($hostname, $website);
@@ -38,7 +35,22 @@ class Tenant{
 
         $owner = static::assignOwner($user);
 
-        return new Tenant($website, $hostname, $owner);
+        return new TenantService($website, $hostname, $owner);
+    }
+
+    public static function update(Request $request, Hostname $hostname){
+        Validator::make($request->all(), [
+            'redirect_to' => 'nullable|string|url',
+            'force_https' => 'required|boolean',
+            'under_maintenance_since' => 'nullable',
+        ])->validate();
+        
+        $hostname->redirect_to = $request->redirect_to ?? NULL;
+        $hostname->force_https = $request->force_https ? true : false;
+        $hostname->under_maintenance_since = $request->under_maintenance ? Carbon::parse($request->under_maintenance)->format('Y-m-d H:i:s') : NULL;
+        $hostname->save();
+        
+        return redirect()->route('tenant.hostname.index')->with('success', 'Hostname updated successfully');
     }
 
     public static function delete($fqdn): bool{
@@ -74,4 +86,5 @@ class Tenant{
     private static function fqdn($fqdn): string{
         return $fqdn.'.'.static::baseUrl();
     }
+
 }

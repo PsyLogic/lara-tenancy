@@ -3,8 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Tenant;
-use Hyn\Tenancy\Environment;
+use App\Services\TenantService;
 
 class createTenant extends Command
 {
@@ -53,12 +52,12 @@ class createTenant extends Command
         ];
 
 
-        if(Tenant::isExists($fqdn)){
+        if(TenantService::isExists($fqdn)){
             $this->error("{$fqdn} is already exists");
             return;
         }
 
-        $Tenant = Tenant::create($fqdn,$user);
+        $Tenant = TenantService::create($fqdn,$user);
         $this->info("New Hostname {$fqdn} is created successufully");
         $this->info("Verification Email was sent to {$Tenant->owner->email}");
     }

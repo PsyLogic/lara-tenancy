@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use App\Tenant;
-use Illuminate\Auth\Events\Registered;
+use App\Services\TenantService;
 
 class RegisterController extends Controller
 {
@@ -73,7 +70,7 @@ class RegisterController extends Controller
         $request->merge(['fqdn' => $fqdn]);
         $this->validator($request->all())->validate();
 
-        $tenant = Tenant::create($username,$request->all());
+        $tenant = TenantService::create($username,$request->all());
         // event(new Registered($tenant->owner));
 
         $this->guard()->login($tenant->owner);
