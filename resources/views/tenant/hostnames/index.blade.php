@@ -29,7 +29,7 @@
                             <td>{{ $hostname->format_under_maintenance_since ?? 'None'}}</td>
                             <td>{{ $hostname->format_create_at }}</td>
                             <td>
-                                <a href="{{ route('tenant.hostname.edit', $hostname) }}" class="btn btn-info btn-sm float-left">Edit</a>
+                                <a href="{{ route('hostname.edit', $hostname) }}" class="btn btn-info btn-sm float-left">Edit</a>
                             </td>
                         </tr>
                         @endforeach

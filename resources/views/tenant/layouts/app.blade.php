@@ -47,6 +47,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('permission.index') }}">Permissions</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('hostname.index') }}">Hostnames</span></a>
+                        </li>
                         @endhasanyrole
                     </ul>
 
