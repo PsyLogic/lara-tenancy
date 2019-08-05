@@ -43,11 +43,9 @@ return [
         // The eager identification middleware.
         \Hyn\Tenancy\Middleware\EagerIdentification::class,
         
-        // The hostname actions middleware (redirects, https, maintenance).
-        \Hyn\Tenancy\Middleware\HostnameActions::class,
+        // The hostname actions middleware (banned ,redirects, https, maintenance).
+        \App\Http\Middleware\HostnameActions::class,
 
-        // Check if the hostname is banned
-        \App\Http\Middleware\BannedHostname::class,
     ],
     'website' => [
         /**
