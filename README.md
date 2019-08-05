@@ -81,7 +81,13 @@ $ php artisan tenant:delete tuto
 ##### Tenant Structure
 Middleware (to enfore using tenant connection)
 ```php
+// to enfore using tenant connection
+
 App/Http/Middleware/EnforceTenancy
+
+//The hostname actions middleware (banned ,redirects, https, maintenance).
+
+App/Http/Middleware/HostnameActions
 ```
 
 Controllers
@@ -101,6 +107,6 @@ routes/tenants.php
 ### Todos
 
  - Tenant CRUD & ACL [done]
- - Tenancy Administration
+ - Tenancy Administration [done]
  - Add Queues and Jobs for Creating tenants & Email verification & password reset
  
