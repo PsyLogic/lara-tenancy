@@ -42,15 +42,15 @@ class TenantService{
         Validator::make($request->all(), [
             'redirect_to' => 'nullable|string|url',
             'force_https' => 'required|boolean',
-            'under_maintenance_since' => 'nullable',
+            'under_maintenance_since' => 'nullable|date',
         ])->validate();
         
         $hostname->redirect_to = $request->redirect_to ?? NULL;
         $hostname->force_https = $request->force_https ? true : false;
-        $hostname->under_maintenance_since = $request->under_maintenance ? Carbon::parse($request->under_maintenance)->format('Y-m-d H:i:s') : NULL;
+        $hostname->under_maintenance_since = $request->under_maintenance_since ?? NULL;
         $hostname->save();
         
-        return redirect()->route('tenant.hostname.index')->with('success', 'Hostname updated successfully');
+        return redirect()->route('hostname.index')->with('success', 'Hostname updated successfully');
     }
 
     public static function delete($fqdn): bool{

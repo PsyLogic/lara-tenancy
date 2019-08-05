@@ -13,7 +13,8 @@ class Hostname extends BaseHostname
      * @var array
      */
     protected $casts = [
-        'created_at' => 'datetime:Y-m-d'
+        'created_at' => 'datetime:Y-m-d',
+        'under_maintenance_since' => 'datetime:Y-m-d'
     ];
 
     public function getStatusAttribute(){
@@ -25,6 +26,6 @@ class Hostname extends BaseHostname
         return $this->created_at->format('Y-m-d');
     }
     public function getFormatUnderMaintenanceSinceAttribute(){
-        return $this->created_at->format('Y-m-d');
+        return optional($this->under_maintenance_since)->format('Y-m-d');
     }
 }

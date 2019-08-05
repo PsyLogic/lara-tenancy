@@ -60,7 +60,6 @@ class HostnameController extends Controller
      */
     public function edit(Hostname $hostname)
     {
-        return back()->with('error', 'The update operation is not available in this version');
         return _Tenant::view('hostnames.edit', compact('hostname'));
     }
 
@@ -73,11 +72,6 @@ class HostnameController extends Controller
      */
     public function update(Request $request, Hostname $hostname)
     {
-        // the issue of not updating the (redirect_to, under_maintenance_since)
-        // of the hostname, that we cannot go back to admin panel
-        // since the \Hyn\Tenancy\Middleware\HostnameActions middleware
-        //will block us if any of those attribute are filled.
-        return back()->with('error', 'The update operation is not available in this version');
         return TenantService::update($request,$hostname);
     }
 

@@ -13,7 +13,7 @@
                     <h5>Edit Hostname <b>{{ $hostname->fqdn }}</b></h5>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="{{route('hostname.update',$hostname)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
@@ -49,7 +49,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Maintenance ?') }}</label>
                             <div class="col-md-6">
-                                <input id="under_maintenance_since" type="date" class="form-control @error('under_maintenance_since') is-invalid @enderror" name="under_maintenance_since" value="{{ old('under_maintenance_since') ?? $hostname->under_maintenance_since }}" >
+                                <input id="under_maintenance_since" type="date" class="form-control @error('under_maintenance_since') is-invalid @enderror" name="under_maintenance_since" value="{{ old('under_maintenance_since') ?? $hostname->under_maintenance_since->format('Y-m-d') }}" >
                                 @error('under_maintenance_since')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
