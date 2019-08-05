@@ -79,14 +79,12 @@ $ php artisan tenant:delete tuto
 ```
 
 ##### Tenant Structure
-Middleware (to enfore using tenant connection)
+Middlewares
 ```php
 // to enfore using tenant connection
-
 App/Http/Middleware/EnforceTenancy
 
 //The hostname actions middleware (banned ,redirects, https, maintenance).
-
 App/Http/Middleware/HostnameActions
 ```
 
