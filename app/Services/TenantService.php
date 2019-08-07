@@ -6,11 +6,11 @@ use Hyn\Tenancy\Contracts\Repositories\WebsiteRepository;
 use Hyn\Tenancy\Contracts\Repositories\HostnameRepository;
 use Hyn\Tenancy\Environment;
 use Illuminate\Support\Facades\Hash;
-use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Website;
 use App\Hostname;
+use App\User;
 use Illuminate\Support\Facades\Validator;
 
 class TenantService{
@@ -65,6 +65,7 @@ class TenantService{
     }
 
     private static function assignOwner(array $user): User{
+        
         $user =  User::create([
             'name' => $user['name'],
             'email' => $user['email'],
