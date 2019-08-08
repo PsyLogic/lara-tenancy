@@ -11,7 +11,10 @@ class TenantMigrateMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'tenancy:make:migration {name : The name of the migration}';
+    protected $signature = 'tenancy:make:migration {name : The name of the migration}
+        {--create= : The table to be created}
+        {--table= : The table to migrate}
+    ';
 
     /**
      * The console command description.
@@ -39,6 +42,8 @@ class TenantMigrateMakeCommand extends Command
     {
         $this->call('make:migration', [
             'name' => $this->input->getArgument('name'),
+            '--create' => $this->input->getOption('create') ?: false,
+            '--table' => $this->input->getOption('table'),
             '--path' => 'database/migrations/tenant'
         ]);
     }
